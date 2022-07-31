@@ -6,6 +6,7 @@ import { StartupContainer } from '@/Containers'
 import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
 import { navigationRef } from './utils'
+import { cameraPermission, microphonePermission } from '@/Utils/PermissionRequest'
 
 const Stack = createStackNavigator()
 
@@ -13,6 +14,9 @@ const Stack = createStackNavigator()
 const ApplicationNavigator = () => {
   const { Layout, darkMode, NavigationTheme } = useTheme()
   const { colors } = NavigationTheme
+
+  cameraPermission()
+  microphonePermission()
 
   return (
     <SafeAreaView style={[Layout.fill, { backgroundColor: colors.card }]}>
